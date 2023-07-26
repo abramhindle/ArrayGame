@@ -1,0 +1,93 @@
+v0.4.2 (15/05/23)
+-Fixed issues with max all for generators
+-Fixed info text in the top corner overlapping the grey line for new players
+-Fixed last two B upgrades not disappearing on separator reset
+-Font now properly starts on pixelated for new players
+-Hopefully made E a bit less confusing
+Endgame: 1,000,000 total SP (Array Value ~{10, 10^6 [1, 2] 10})
+
+v0.4.1 (15/05/23)
+-Added E-1
+-Added F and F-1
+-Added some more separator upgrades
+-Added a confirmation option for separator resets
+-Fixed a few bugs
+Endgame: 1,000,000 total SP (Array Value ~{10, 10^6 [1, 2] 10})
+
+v0.4.0 (14/05/23)
+-Added separators, separator boosts and separator upgrades
+-E now exists and boosts A and D
+-Everything is now smaller
+-Moved generator max all buttons to above the generators
+-Fixed bugs regarding B upgrades resetting
+-Added hotkeys to change tabs
+Endgame: 10 E (Array Value ~{10, 10 [12] 10})
+
+v0.3.2 (24/04/23)
+-Added D generators
+-Added some more D milestones and challenges
+-Added max all buttons for generators
+-Challenges tab now has a green border when a challenge is ready to finish
+-B upgrades are now kept on all resets with the C milesone instead of just C resets
+-Pixelated is the default font for new players again
+Endgame: 1e10 D (Array Value ~{10, 10, 10, {10, 10}})
+
+v0.3.1 (22/04/23)
+-Pixelated font now has monospace numbers! So it's hopefully far less jittery
+-Fixed D resets still saying "Are you sure you want to reset for C?"
+-Other minor fixes
+Endgame: 7 D (Array Value ~{10, 10, 10, 7})
+
+v0.3.0 (19/04/23)
+-D now exists and boosts A, B and C
+-Added a few D milestones with benefits (up to 7 D)
+-Added Ch-B1
+-Automatically buying A upgrades no longer spends the money
+-Fixed a few bugs
+Endgame: 7 D (Array Value ~{10, 10, 10, 7})
+
+v0.2.2 (14/04/23)
+-Added the rest of the C generators
+-Added some more C milestones and challenges
+-Added toggles for reset confirmations
+-Hopefully fixed NaN issues
+-Monospace font is now the default for new players
+-The array no longer overlaps the settings on smaller screens
+-Fixed a few bugs and visual errors
+Endgame: 1e10 C (Array value ~10{10^10}10)
+
+v0.2.1 (11/04/23)
+-Added C-1
+-Added some new C milestones
+-Added Ch-A2
+-Added option to switch to monospace font
+-Added import and export buttons
+-Fixed a few bugs
+Endgame: 50 C (Array value ~10{50}10^400)
+
+v0.2.0 (10/04/23)
+-First public release!
+-C now exists and boosts A and B
+-Added a few C milestones with benefits (up to 5 C)
+-Added challenges
+Endgame: 5 C (Array value ~10{5}10^200)
+
+v0.1.3 (09/04/23)
+-Added a whole bunch of B upgrades
+-Added a new A upgrade and a buy max for A upgrades
+Endgame: 1e10 B and 1e180 A (Array value ~10^10^12)
+
+v0.1.2 (07/04/23)
+-Added B generators
+-Added A boosters and A boosterators 
+Endgame: 3 B-1s and 3 A-boosterators (Array value ~10^400)
+
+v0.1.1 (07/04/23)
+-B now exists and boosts A
+-Added reset button to gain B
+Endgame: 3 B (Array value ~10^30)
+
+v0.1.0 (07/04/23)
+-All content up to first B
+-Two number formats: normal and array
+Endgame: 1e10 A (Array value ~10^10)

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Array Game</title>
+	<meta content="Array Game" property="og:title" />
+  <meta content="please fix the mobile version" property="og:description" />
+  <meta content="http://demonin.com/games/arrayGame" property="og:url" />
+  <meta content="#0000ff" data-react-helmet="true" name="theme-color" />
+  <meta name="color-scheme" content="light only">
+  <link rel="icon" type="image/x-icon" href="img/icon.png">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div style="min-height: 190px">
+		<h1 id="titleText" onclick="changeTitle()">Array Game</h1>
+		<h1 style="font-size: 48px; width: calc(100% - 520px)">{<span id="array"><span style="color:#00f">0</span></span>}<span id="arrayValue"> = 0</span></h1><br>
+		<button class="AButton tabButton" onclick="changeTab(0)">Array item A</button>
+		<button class="BButton tabButton" style="display: none" onclick="changeTab(1)">Array item B</button>
+		<button class="CButton tabButton" style="display: none" onclick="changeTab(2)">Array item C</button>
+		<button class="DButton tabButton" style="display: none" onclick="changeTab(4)">Array item D</button><br>
+		<button class="otherButton tabButton" style="display: none" onclick="changeTab(3)">Challenges</button>
+		<button class="separatorButton tabButton" style="display: none" onclick="changeTab(5)">Separators</button>
+		<button class="arrayItemsIIButton tabButton" style="display: none" onclick="changeTab(6)">Array items II</button>
+	</div>
+	
+  <hr>
+
+  <!--A tab-->
+  <div class="tab">
+    <h1 style="margin-bottom: 25px">You have <span id="A" style="color: #00f">0</span> A</h1>
+    <h2>A generators</h2>
+    <p>Buying generators beyond 20 increases that generator's production</p>
+		<button class="AButton" onclick="buyMaxGenerators(1,6)">Max all</button>
+    <div class="generator" style="background-color: #008">
+      <p class="generatorText">Generator A-1: <span class="AGeneratorAmount" style="color: #88f">0</span><br>Producing <span class="AGeneratorProduction" style="color: #88f">0</span> A/s<span class="AGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(1,1)">Buy an A-1 (<span class="AGeneratorBought">0</span>)<br>Costs <span class="AGeneratorCost">0</span> A</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(1,1)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #008">
+      <p class="generatorText">Generator A-2: <span class="AGeneratorAmount" style="color: #88f">0</span><br>Producing <span class="AGeneratorProduction" style="color: #88f">0</span> A-1/s<span class="AGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(1,2)">Buy an A-2 (<span class="AGeneratorBought">0</span>)<br>Costs <span class="AGeneratorCost">0</span> A</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(1,2)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #008">
+      <p class="generatorText">Generator A-3: <span class="AGeneratorAmount" style="color: #88f">0</span><br>Producing <span class="AGeneratorProduction" style="color: #88f">0</span> A-2/s<span class="AGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(1,3)">Buy an A-3 (<span class="AGeneratorBought">0</span>)<br>Costs <span class="AGeneratorCost">0</span> A</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(1,3)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #008">
+      <p class="generatorText">Generator A-4: <span class="AGeneratorAmount" style="color: #88f">0</span><br>Producing <span class="AGeneratorProduction" style="color: #88f">0</span> A-3/s<span class="AGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(1,4)">Buy an A-4 (<span class="AGeneratorBought">0</span>)<br>Costs <span class="AGeneratorCost">0</span> A</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(1,4)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #008; margin-bottom: 40px">
+      <p class="generatorText">Generator A-5: <span class="AGeneratorAmount" style="color: #88f">0</span><br>Producing <span class="AGeneratorProduction" style="color: #88f">0</span> A-4/s<span class="AGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(1,5)">Buy an A-5 (<span class="AGeneratorBought">0</span>)<br>Costs <span class="AGeneratorCost">0</span> A</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(1,5)">Buy max</button>
+    </div>
+		<br>
+
+    <button class="AButton AUpgrade" onclick="buyUpgrade(1,1)">Double A-1 production (Currently *<span class="AUpgradeEffect">0</span>)<br>Costs <span class="AUpgradeCost">0</span> A</button>
+    <button class="AButton AUpgrade" onclick="buyUpgrade(1,2)">Double A-2 production (Currently *<span class="AUpgradeEffect">0</span>)<br>Costs <span class="AUpgradeCost">0</span> A</button>
+    <button class="AButton AUpgrade" style="display: none" onclick="buyUpgrade(1,3)">Triple B gain (Currently *<span class="AUpgradeEffect">0</span>)<br>Costs <span class="AUpgradeCost">0</span> A</button>
+    <button class="AButton AUpgrade" style="display: none" onclick="buyUpgrade(1,4)">Buy max</button><br><br>
+
+    <button class="BButton" onclick="prestigeConfirm(1)">Reset all A content for <span id="BToGet">0</span> B<br>Next at <span id="nextB">0</span> A</button>
+		<button class="BButton confirmationButton" onclick="toggleConfirmation(1)">Confirmation: On</button>
+  </div>
+
+  <!--B tab-->
+  <div class="tab" style="display: none">
+    <h1>You have <span id="B" style="color: #80f">0</span> B, multiplying A gain by <span id="BBoost">1.00</span></h1>
+    <p id="BPerSecond" style="display: none"></p>
+    <p style="margin-bottom: 25px">If your B is ever reduced to 0, it will automatically increase to 1</p>
+    <h2>B generators</h2>
+    <p>Buying generators beyond 20 increases that generator's production</p>
+		<button class="BButton" onclick="buyMaxGenerators(2,6)">Max all</button>
+    <div class="generator" style="background-color: #408">
+      <p class="generatorText">Generator B-1: <span class="BGeneratorAmount" style="color: #b8f">0</span><br>Producing <span class="BGeneratorProduction" style="color: #88f">0</span> A-5/s<span class="BGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(2,1)">Buy a B-1 (<span class="BGeneratorBought">0</span>)<br>Costs <span class="BGeneratorCost">0</span> B</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(2,1)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #408">
+      <p class="generatorText">Generator B-2: <span class="BGeneratorAmount" style="color: #b8f">0</span><br>Producing <span class="BGeneratorProduction" style="color: #b8f">0</span> B-1/s<span class="BGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(2,2)">Buy a B-2 (<span class="BGeneratorBought">0</span>)<br>Costs <span class="BGeneratorCost">0</span> B</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(2,2)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #408">
+      <p class="generatorText">Generator B-3: <span class="BGeneratorAmount" style="color: #b8f">0</span><br>Producing <span class="BGeneratorProduction" style="color: #b8f">0</span> B-2/s<span class="BGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(2,3)">Buy a B-3 (<span class="BGeneratorBought">0</span>)<br>Costs <span class="BGeneratorCost">0</span> B</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(2,3)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #408">
+      <p class="generatorText">Generator B-4: <span class="BGeneratorAmount" style="color: #b8f">0</span><br>Producing <span class="BGeneratorProduction" style="color: #b8f">0</span> B-3/s<span class="BGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(2,4)">Buy a B-4 (<span class="BGeneratorBought">0</span>)<br>Costs <span class="BGeneratorCost">0</span> B</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(2,4)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #408">
+      <p class="generatorText">Generator B-5: <span class="BGeneratorAmount" style="color: #b8f">0</span><br>Producing <span class="BGeneratorProduction" style="color: #b8f">0</span> B-4/s<span class="BGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(2,5)">Buy a B-5 (<span class="BGeneratorBought">0</span>)<br>Costs <span class="BGeneratorCost">0</span> B</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(2,5)">Buy max</button>
+    </div>
+		<br>
+    <h2>A-boosters</h2>
+    <p>You have <span id="ABoosters" style="color: #80f">0</span> A-boosters, boosting A generator production by *<span id="ABoosterEffect">1.00</span><br>You have <span id="ABoosterators" style="color: #80f">0</span> A-boosterators, giving you <span id="ABoosteratorProduction">0</span> A-boosters per second</p>
+    <button class="BButton" style="margin-bottom: 25px" onclick="buyABoosterator()">Buy an A-boosterator<br>Costs <span id="ABoosteratorCost">0</span> B</button>
+		<button class="BButton" style="margin-bottom: 25px; margin-left: 0" onclick="buyMaxABoosterators()">Buy max</button><br>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,1)">Unlock buy max for A upgrades<br>Requires 20 B (Will not reduce B)</button>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,2)">Formula for the A generator amount boost is improved<br>Costs 50 B</button>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,3)">Automatically gain 20% of B reset amount per second<br>Costs 200 B</button>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,4)">B-1s bought multiply A-booster gain<br>Costs 2,000 B</button>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,5)">Unlock a new A upgrade<br>Costs 15,000 B</button>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,6)">B generators bought multiply their corresponding A generator's production<br>Costs 500,000 B</button>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,7)">A-boosterator production is stronger<br>Costs 5,000,000 B</button>
+    <button class="BButton BUpgrade" onclick="buyUpgrade(2,8)">Multiply B generator production by 100<br>Costs 100,000,000 B</button>
+		<button class="BButton BUpgrade" style="display: none" onclick="buyUpgrade(2,9)">Triple C gain (Currently *<span class="BUpgradeEffect">0</span>)<br>Costs <span class="BUpgradeCost">0</span> B</button>
+		<button class="BButton BUpgrade" style="display: none" onclick="buyUpgrade(2,11)">Triple D gain (Currently *<span class="BUpgradeEffect">0</span>)<br>Costs <span class="BUpgradeCost">0</span> B</button><br><br>
+
+    <button class="CButton" onclick="prestigeConfirm(2)">Reset all A-B content for <span id="CToGet">0</span> C<br>Next at <span id="nextC">0</span> B</button>
+		<button class="CButton confirmationButton" onclick="toggleConfirmation(2)">Confirmation: On</button>
+  </div>
+
+  <!--C tab-->
+  <div class="tab" style="display: none">
+    <h1>You have <span id="C" style="color: #f0f">0</span> C, multiplying A and B gain by <span id="CBoost">1.00</span></h1>
+		<p id="CPerSecond" style="display: none"></p>
+    <p style="margin-bottom: 25px">If your C is ever reduced to 0, it will automatically increase to 1</p>
+		<h2>C generators</h2>
+    <p>Buying generators beyond 20 increases that generator's production</p>
+		<button class="CButton" onclick="buyMaxGenerators(3,6)">Max all</button>
+		<div class="generator" style="background-color: #808">
+      <p class="generatorText">Generator C-1: <span class="CGeneratorAmount" style="color: #f8f">0</span><br>Producing <span class="CGeneratorProduction" style="color: #b8f">0</span> B-5/s<span class="CGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(3,1)">Buy a C-1 (<span class="CGeneratorBought">0</span>)<br>Costs <span class="CGeneratorCost">0</span> C</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(3,1)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #808">
+      <p class="generatorText">Generator C-2: <span class="CGeneratorAmount" style="color: #f8f">0</span><br>Producing <span class="CGeneratorProduction" style="color: #f8f">0</span> C-1/s<span class="CGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(3,2)">Buy a C-2 (<span class="CGeneratorBought">0</span>)<br>Costs <span class="CGeneratorCost">0</span> C</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(3,2)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #808">
+      <p class="generatorText">Generator C-3: <span class="CGeneratorAmount" style="color: #f8f">0</span><br>Producing <span class="CGeneratorProduction" style="color: #f8f">0</span> C-2/s<span class="CGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(3,3)">Buy a C-3 (<span class="CGeneratorBought">0</span>)<br>Costs <span class="CGeneratorCost">0</span> C</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(3,3)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #808">
+      <p class="generatorText">Generator C-4: <span class="CGeneratorAmount" style="color: #f8f">0</span><br>Producing <span class="CGeneratorProduction" style="color: #f8f">0</span> C-3/s<span class="CGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(3,4)">Buy a C-4 (<span class="CGeneratorBought">0</span>)<br>Costs <span class="CGeneratorCost">0</span> C</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(3,4)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #808">
+      <p class="generatorText">Generator C-5: <span class="CGeneratorAmount" style="color: #f8f">0</span><br>Producing <span class="CGeneratorProduction" style="color: #f8f">0</span> C-4/s<span class="CGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(3,5)">Buy a C-5 (<span class="CGeneratorBought">0</span>)<br>Costs <span class="CGeneratorCost">0</span> C</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(3,5)">Buy max</button>
+    </div>
+		<br>
+    <h2>C milestones</h2>
+    <div class="milestone CMilestone"><span style="font-size: 24px">1 C</span><br>Unlock Ch-A1</div>
+    <div class="milestone CMilestone"><span style="font-size: 24px">3 C</span><br>Keep B upgrades 2 and 3 on C reset</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">5 C</span><br>C amount multiplies B generator production</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">8 C</span><br>Keep all B upgrades permanently</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">10 C</span><br>Unlock Ch-A2</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">20 C</span><br>Automatically buy A upgrades</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">30 C</span><br>A-boosterators multiply A generator production</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">50 C</span><br>Automatically buy A generators (outside of Ch-A1)</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">100 C</span><br>Unlock Ch-A3</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">300 C</span><br>Automatically gain 20% of C reset amount per second</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">10,000 C</span><br>Unlock Ch-A4</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">30,000 C</span><br>Formula for the B generator amount boost is improved</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">100,000 C</span><br>C-4s bought multiply C gain</div>
+		<div class="milestone CMilestone"><span style="font-size: 24px">1,000,000 C</span><br>Unlock a new B upgrade</div><br><br>
+		
+		<button class="DButton" onclick="prestigeConfirm(3)">Reset all A-C content for <span id="DToGet">0</span> D<br>Next at <span id="nextD">0</span> C</button>
+		<button class="DButton confirmationButton" onclick="toggleConfirmation(3)">Confirmation: On</button>
+  </div>
+
+  <!--Challenges tab-->
+  <div class="tab" style="display: none">
+    <button id="finishChallengeButton" style="font-size: 24px" onclick="finishChallenge()" disabled>Finish challenge</button>
+		<div class="challengeSection" style="margin-bottom: 40px">
+			<h2>A Challenges</h2>
+			<p>Entering/leaving these challenges resets all A content. Challenge completions are kept on B and C resets.</p>
+			<div class="challenge AButton" onclick="enterChallenge(1)">
+				<span style="color: white">Ch-A1</span><br>A-1 production is ^0.5. You cannot buy A generators.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: A-1 production is increased (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+			<div class="challenge AButton" style="display: none" onclick="enterChallenge(2)">
+				<span style="color: white">Ch-A2</span><br>A-2 amount divides A-2 production.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: B gain is increased based on B-5 amount (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+			<div class="challenge AButton" style="display: none" onclick="enterChallenge(3)">
+				<span style="color: white">Ch-A3</span><br>A-3 cannot be bought or produced.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: C gain is increased (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+			<div class="challenge AButton" style="display: none" onclick="enterChallenge(4)">
+				<span style="color: white">Ch-A4</span><br>A generator production is ^0.2.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: A-4 production is increased (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+		</div>
+		<div class="challengeSection" style="display: none">
+			<h2>B Challenges</h2>
+			<p>Entering/leaving these challenges resets all A-B content. Challenge completions are kept on C and D resets.</p>
+			<div class="challenge BButton" onclick="enterChallenge(5)">
+				<span style="color: white">Ch-B1</span><br>B generators and A-boosters cannot be produced, but B generators can be bought.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: C-1 production is increased (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+			<div class="challenge BButton" style="display: none" onclick="enterChallenge(6)">
+				<span style="color: white">Ch-B2</span><br>B-1 production is 0. C-1 now produces A-5. A-1 production is ^0.5.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: C gain is increased (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+			<div class="challenge BButton" style="display: none" onclick="enterChallenge(7)">
+				<span style="color: white">Ch-B3</span><br>All A and B generator production is divided by 1e35.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: D-1 production is increased (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+			<div class="challenge BButton" style="display: none" onclick="enterChallenge(8)">
+				<span style="color: white">Ch-B4</span><br>A and B generator production is ^0.1.<br><br>Goal: <span class="challengeGoal">0</span> A<br><br>Reward: B gain is increased (*<span class="challengeEffect">0</span>) [<span class="challengesBeaten">0</span>/6]
+			</div>
+		</div>
+  </div>
+	
+	<!--D tab-->
+  <div class="tab" style="display: none">
+    <h1>You have <span id="D" style="color: #f00">0</span> D, multiplying A, B and C gain by <span id="DBoost">1.00</span></h1>
+		<p id="DPerSecond" style="display: none"></p>
+    <p style="margin-bottom: 40px">If your D is ever reduced to 0, it will automatically increase to 1</p>
+		<h2>D generators</h2>
+    <p>Buying generators beyond 20 increases that generator's production</p>
+		<button class="DButton" onclick="buyMaxGenerators(4,6)">Max all</button>
+		<div class="generator" style="background-color: #800">
+      <p class="generatorText">Generator D-1: <span class="DGeneratorAmount" style="color: #f88">0</span><br>Producing <span class="DGeneratorProduction" style="color: #f8f">0</span> C-5/s<span class="DGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(4,1)">Buy a D-1 (<span class="DGeneratorBought">0</span>)<br>Costs <span class="DGeneratorCost">0</span> D</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(4,1)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #800">
+      <p class="generatorText">Generator D-2: <span class="DGeneratorAmount" style="color: #f88">0</span><br>Producing <span class="DGeneratorProduction" style="color: #f88">0</span> D-1/s<span class="DGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(4,2)">Buy a D-2 (<span class="DGeneratorBought">0</span>)<br>Costs <span class="DGeneratorCost">0</span> D</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(4,2)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #800">
+      <p class="generatorText">Generator D-3: <span class="DGeneratorAmount" style="color: #f88">0</span><br>Producing <span class="DGeneratorProduction" style="color: #f88">0</span> D-2/s<span class="DGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(4,3)">Buy a D-3 (<span class="DGeneratorBought">0</span>)<br>Costs <span class="DGeneratorCost">0</span> D</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(4,3)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #800">
+      <p class="generatorText">Generator D-4: <span class="DGeneratorAmount" style="color: #f88">0</span><br>Producing <span class="DGeneratorProduction" style="color: #f88">0</span> D-3/s<span class="DGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(4,4)">Buy a D-4 (<span class="DGeneratorBought">0</span>)<br>Costs <span class="DGeneratorCost">0</span> D</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(4,4)">Buy max</button>
+    </div>
+    <div class="generator" style="background-color: #800">
+      <p class="generatorText">Generator D-5: <span class="DGeneratorAmount" style="color: #f88">0</span><br>Producing <span class="DGeneratorProduction" style="color: #f88">0</span> D-4/s<span class="DGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(4,5)">Buy a D-5 (<span class="DGeneratorBought">0</span>)<br>Costs <span class="DGeneratorCost">0</span> D</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(4,5)">Buy max</button>
+    </div>
+		<br>
+		<h2>D milestones</h2>
+    <div class="milestone DMilestone"><span style="font-size: 24px">1 D</span><br>Unlock Ch-B1</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">2 D</span><br>A generator amount boost formula is improved again</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">4 D</span><br>Keep C milestones on D reset</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">7 D</span><br>Keep A challenges on B-D resets</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">10 D</span><br>Unlock Ch-B2</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">30 D</span><br>Automatically buy B upgrades and A-boosterators</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">60 D</span><br>Automatically buy B generators</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">100 D</span><br>Automatically gain 20% of D reset amount per second</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">400 D</span><br>D-1s bought multiply C gain</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">1,000 D</span><br>Unlock Ch-B3</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">2,000 D</span><br>D gain is squared</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">20,000 D</span><br>C generators multiply their corresponding B generator's production</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">50,000 D</span><br>Unlock a new B upgrade</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">200,000 D</span><br>Formula for the C generator amount boost is improved</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">2,500,000 D</span><br>Unlock Ch-B4</div>
+		<div class="milestone DMilestone"><span style="font-size: 24px">75,000,000 D</span><br>D-5 amount multiplies C generator production</div><br><br>
+		
+		<button id="separatorUnlockButton" class="otherButton" onclick="unlockSeparators()">Unlock <span style="background: -webkit-linear-gradient(#fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">separators</span><br>Requires <span id="separatorUnlockRequirement">0</span> D</button>
+	</div>
+	
+	<!--Separators tab-->
+  <div class="tab" style="display: none">
+    <h1 id="separatorText">You have a [<span id="separator" style="color: #888">1</span>] separator</h1>
+		<p id="separatorsPerSecond" style="display: none"></p>
+		<button class="otherButton" onclick="upgradeSeparator()">Reset all A-D content to upgrade to a [<span id="nextSeparator" style="color: #888">2</span>] separator<br>Next at <span id="separatorRequirement">0</span> D<br>You will gain <span id="separatorPointsToGet" style="color: #888">0</span> SP on reset</button>
+		<button class="OtherButton confirmationButton" onclick="toggleConfirmation(4)">Confirmation: On</button><br><br>
+		<h2 id="separatorText">You have <span id="separatorPoints" style="color: #888">0</span> unspent separator points (<span id="totalSeparatorPoints" style="color: #888">0</span> total)</h2>
+		<div class="separatorBoost otherButton" style="color: #c9f; margin-left: 8px" onclick="buySeparatorBoost(1)">Boost SP-B<br>Boosting B gain by ^<span class="separatorBoostEffect">1.00</span><br>Next: ^<span class="nextSeparatorBoostEffect">1.00</span><br><span class="separatorBoostSpent" style="font-weight: bold; color: #888">0 SP spent</span></div>
+		<div class="separatorBoost otherButton" style="color: #fbb" onclick="buySeparatorBoost(2)">Boost SP-D<br>Boosting D gain by *<span class="separatorBoostEffect">1.00</span><br>Next: *<span class="nextSeparatorBoostEffect">1.00</span><br><span class="separatorBoostSpent" style="font-weight: bold; color: #888">0 SP spent</span></div>
+		<div class="separatorBoost otherButton" style="color: #ccc" onclick="buySeparatorBoost(3)">Boost SP-Ch<br>Boosting Ch-A1 and Ch-B1 effect by ^<span class="separatorBoostEffect">1.00</span><br>Next: ^<span class="nextSeparatorBoostEffect">1.00</span><br><span class="separatorBoostSpent" style="font-weight: bold; color: #888">0 SP spent</span></div><br>
+		<div class="separatorBoostMax otherButton" style="color: #c9f; margin-left: 8px" onclick="buySeparatorBoost(1,1)">Spend max</span></div>
+		<div class="separatorBoostMax otherButton" style="color: #fbb" onclick="buySeparatorBoost(2,1)">Spend max</span></div>
+		<div class="separatorBoostMax otherButton" style="color: #ccc" onclick="buySeparatorBoost(3,1)">Spend max</span></div><br>
+		<div class="separatorBoostMax otherButton" style="color: #bff; margin-left: 8px" onclick="buySeparatorBoost(4)">Distribute SP equally</span></div><br><br>
+		
+		<button class="separatorUpgrade otherButton" onclick="buySeparatorUpgrade(1)">Keep A and B challenges permanently<br>Costs 5 SP</button>
+		<button class="separatorUpgrade otherButton" style="display: none" onclick="buySeparatorUpgrade(2)">Keep 1 C and C milestones on separator reset<br>Costs 4 SP</button>
+		<button class="separatorUpgrade otherButton" style="display: none" onclick="buySeparatorUpgrade(3)">Keep 1 D and C milestones on separator reset<br>Costs 6 SP</button>
+		<button class="separatorUpgrade otherButton" style="display: none" onclick="buySeparatorUpgrade(4)">Keep B upgrades on separator reset<br>Costs 8 SP</button>
+		<button class="separatorUpgrade otherButton" style="display: none" onclick="buySeparatorUpgrade(5)">Automatically gain 100% of separators and SP reset amount per second<br>Costs 100 SP</button>
+		<button class="separatorUpgrade otherButton" style="display: none" onclick="buySeparatorUpgrade(6)">A amount multiplies separator and SP gain (currently *<span class="separatorUpgradeEffect">1.00</span>)<br>Costs 250,000 SP</button><br><br>
+		<button class="otherButton" onclick="refundSeparatorPoints()">Refund SP from boosts and upgrades<br>Will perform a separator reset!</button>
+	</div>
+	
+	<!--Array Items II tab-->
+  <div class="tab" style="display: none">
+    <h1>You have <span id="E" style="color: #f80">0</span> E, multiplying A and D gain by <span id="EBoost">1.00</span></h1>
+		<div class="generator" style="background-color: #840">
+      <p class="generatorText">Generator E-1: <span class="EGeneratorAmount" style="color: #fb8">0</span><br>Producing <span class="EGeneratorProduction" style="color: #f88">0</span> D-5/s<span class="EGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(5,1)">Buy an E-1 (<span class="EGeneratorBought">0</span>)<br>Requires <span class="EGeneratorCost">0</span> E</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(5,1)">Buy max</button>
+    </div>
+		<button class="EButton" onclick="gainArray(1)">Gain 1 E<br>Requires <span class="arrayGainRequirement" style="color: #888">1</span> total SP</button>
+		<button class="EButton" onclick="gainMaxArray(1)">Gain max</button>
+		<p style="color: #888; margin-bottom: 40px">(Gaining E will not spend your SP)</p>
+		<h1>You have <span id="F" style="color: #ff0">0</span> F, multiplying separator and SP gain by <span id="FBoost">1.00</span></h1><br>
+		<div class="generator" style="background-color: #880">
+      <p class="generatorText">Generator F-1: <span class="FGeneratorAmount" style="color: #ff8">0</span><br>Producing <span class="FGeneratorProduction" style="color: #fb8">0</span> E-1/s<span class="FGeneratorMultiplier"></span></p>
+      <button style="display: inline-block; margin: 0; margin-left: auto" onclick="buyGenerator(6,1)">Buy an F-1 (<span class="FGeneratorBought">0</span>)<br>Requires <span class="FGeneratorCost">0</span> F</button>
+      <button style="display: inline-block; margin: 0; border-left: none" onclick="buyMaxGenerators(6,1)">Buy max</button>
+    </div>
+		<button class="FButton" onclick="gainArray(2)">Gain 1 F<br>Requires <span class="arrayGainRequirement" style="color: #888">1</span> total SP</button>
+		<button class="FButton" style="margin-bottom: 40px" onclick="gainMaxArray(2)">Gain max</button>
+		<h1>You have <span style="color: #0f0">0</span> G</h1><br>
+		<h1>You have <span style="color: #0ff">0</span> H</h1>
+	</div>
+
+  <!--Settings tab-->
+  <div style="position: absolute; top: 4px; right: 4px; float: right">
+    <button onclick="hardReset()" style="float: right; color: #f88">Hard reset</button>
+		<button onclick="save()" style="float: right">Save</button>
+		<button onclick="exportGame()" style="float: right">Export game</button>
+		<button onclick="importGame()" style="float: right">Import game</button><br>
+    <button id="formatSetting" style="float: right" onclick="changeNotation()">Number format: Normal</button>
+		<button id="fontSetting" style="float: right" onclick="changeFont()">Font: Monospace</button><br>
+    <p style="text-align: right; width: 300px; float: right">Array game v0.4.2<br>Made by Demonin<br><a href="changelog.txt">Changelog</a><br><span style="color: #888">Notation and analysis are based on <a href="http://www.mrob.com/users/chrisb/index.html">Bird's Array Notation</a></span></p>
+  </div>
+
+  <!--Welcome back tab-->
+  <div id="welcomeBackTab">
+    <center>
+      <h2>Welcome back!<br>You were gone for <span id="welcomeBackTime">12 hours</span>.</h2>
+      <button class="otherButton" onclick="$('#welcomeBackTab').css('display', 'none')">Close</button>
+    </center>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="Mousetrap.js"></script>
+  <script src="break_eternity.js"></script>
+  <script src="constants.js"></script>
+  <script src="script.js"></script>
+  <script>load(); if (!isDevVersion) setAutoSave()</script>
+</body>
+
+</html>

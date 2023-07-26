@@ -1,0 +1,218 @@
+@font-face{
+    font-family:"Pixelated MS Sans Serif";
+    font-style:normal;
+    font-weight:400;
+    src:url(fonts/ms_sans_serif_mono.woff) format("woff");
+		
+}
+
+html, body {
+  background-color: black;
+  color: #ccc;
+  font-family: Pixelated MS Sans Serif;
+  image-rendering: pixelated;
+}
+
+#titleText {
+  cursor: pointer;
+  user-select: none;
+}
+
+hr {
+  height: 4px;
+  border-width: 0;
+  background-color: gray;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 8px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 8px;
+}
+
+p {
+  font-size: 18px;
+  margin: 8px;
+}
+
+button {
+  margin-top: 3px;
+  margin-left: 8px;
+  margin-bottom: 6px;
+  font-family: Pixelated MS Sans Serif;
+  font-size: 18px;
+  padding: 4px;
+  border: 3px solid #ccc;
+  background-color: #111;
+  color: #ccc;
+  cursor: pointer;
+}
+
+button:disabled, #finishChallengeButton:disabled {
+  border: 3px solid #777;
+  color: #aaa;
+  cursor: auto;
+}
+
+#welcomeBackTab {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #111;
+	border: 3px solid #666;
+	padding: 8px;
+	display: none;
+}
+
+.generatorText {
+  display: inline-block;
+  font-size: 18px;
+  margin: 0;
+  margin-left: 8px; 
+  align-self: center;
+}
+
+.generator {
+  display: flex;
+  align-items: stretch;
+  padding: 4px;
+  margin-bottom: 8px;
+  width: 700px;
+}
+
+.tabButton {
+	margin-left: 8px;
+}
+
+.AButton {
+  border: 3px solid #00f;
+  color: #88f;
+}
+
+.BButton {
+  border: 3px solid #80f;
+  color: #b8f;
+}
+
+.CButton {
+  border: 3px solid #f0f;
+  color: #f8f;
+}
+
+.DButton {
+  border: 3px solid #f00;
+  color: #f88;
+}
+
+.EButton {
+  border: 3px solid #f80;
+  color: #fb8;
+}
+
+.FButton {
+  border: 3px solid #ff0;
+  color: #ff8;
+}
+
+.milestone {
+	display: inline-block;
+	width: 120px;
+	min-height: 120px;
+	font-size: 16px;
+	text-align: center;
+	margin: 0;
+	margin-bottom: 6px;
+	padding: 6px;
+	vertical-align: top;
+}
+
+.CMilestone {
+	color: #f8f;
+	background-color: #808;
+	border: 3px solid #f0f;
+}
+
+.DMilestone {
+	color: #f88;
+	background-color: #800;
+	border: 3px solid #f00;
+}
+
+.otherButton {
+  border: 3px solid #bbb;
+  color: #fff;
+}
+
+.separatorButton {
+  border: 3px solid #bbb;
+  color: #fff;
+	background: -webkit-linear-gradient(#fff, #666);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.arrayItemsIIButton {
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(90deg, #f80, #ff0, #0f0, #0ff) 3 round;
+  color: #fff;
+	background: -webkit-linear-gradient(0deg, #f80, #ff0, #0f0, #0ff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.challenge {
+	display: inline-block;
+	width: 250px;
+	min-height: 160px;
+	font-size: 18px;
+	text-align: center;
+	padding: 6px;
+	cursor: pointer;
+	background-color: #111;
+	vertical-align: top;
+}
+
+.challengeGoal {
+	color: #ccc;
+}
+
+#finishChallengeButton {
+	border: 3px solid #0f0;
+	color: #0f0;
+}
+
+.separatorBoost {
+	display: inline-block;
+	width: 200px;
+	min-height: 100px;
+	font-size: 18px;
+	text-align: center;
+	padding: 6px;
+	cursor: pointer;
+	background-color: #111;
+	vertical-align: top;
+}
+
+.separatorBoostMax {
+	display: inline-block;
+	width: 200px;
+	font-size: 18px;
+	text-align: center;
+	padding: 6px;
+	cursor: pointer;
+	background-color: #111;
+	vertical-align: top;
+	margin-top: 4px;
+}
+
+.separatorUpgrade {
+	color: #8f8;
+}
