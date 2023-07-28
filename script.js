@@ -1434,6 +1434,7 @@ function calculateUnspentSeparators() {
 
 function buySeparatorBoost(x, max=0) {
 	if (x==4) {
+		calculateUnspentSeparators() // make sure it is accurate before we divide.
 		splitSPAmount = game.unspentSeparatorPoints.div(3).floor()
 		for (i=0;i<3;i++) game.separatorBoosts[i] = game.separatorBoosts[i].add(splitSPAmount)
 		calculateUnspentSeparators()
